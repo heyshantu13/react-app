@@ -1,7 +1,7 @@
 import React,{useState} from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 // import { Formik, Form, Field, ErrorMessage } from 'formik'
-import { httpUserRegister } from "../../../http/user.service";
+import { httpUpdateUserAfterRegister, httpUserRegister } from "../../http/user.service";
 import toast,{ Toaster } from 'react-hot-toast';
 
 
@@ -29,10 +29,13 @@ function Register() {
       }))
       try{
         const httpRespons = await httpUserRegister(state);
-        if(httpRespons.data.status == 201){
-          toast.success("User Created Succesfully..")
+        if(httpRespons.data.status === 201){
+            await httpUpdateUserAfterRegister({
+              userName : state.userName
+            })
+          toast.success("User Created Succesfully")
           setTimeout(() => {
-            navigate("/dashboard")
+            navigate("/admin/dashboard")
           },2000)
         }
       }catch(error){
@@ -41,8 +44,6 @@ function Register() {
           ...prevState,
           disabled: false,
         }))
-      }finally{
-         
       }
     }
 

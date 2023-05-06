@@ -1,6 +1,6 @@
 import React,{lazy} from "react";
-import Login from "../components/pages/login";
-import Register from "../components/pages/register";
+import Login from "../pages/login";
+import Register from "../pages/register";
 
 const CommonRouter = [
     {
