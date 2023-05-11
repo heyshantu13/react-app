@@ -1,4 +1,5 @@
 import DashboardWrapper from "../components/layouts/DashboardWrapper";
+import Choose from "../pages/choose";
 import Dashboard from "../pages/dashboard";
 import Roles from "../pages/dashboard/Roles";
 import Users from "../pages/dashboard/Users";
@@ -9,7 +10,12 @@ const AdminRouter = [
     {
       path: "/admin/",
       element: <PrivateRoutes />,
-          children: [{
+          children: [
+            {
+              path: "select",
+              element: <Choose />,
+            },
+            {
             path: "dashboard",
             element: <DashboardWrapper childComponent={<Dashboard />} />,
           },
@@ -19,6 +25,10 @@ const AdminRouter = [
           },
           {
             path: "users",
+            element: <DashboardWrapper childComponent={<Users />} />,
+          },
+          {
+            path: "role-mapping",
             element: <DashboardWrapper childComponent={<Users />} />,
           },
           

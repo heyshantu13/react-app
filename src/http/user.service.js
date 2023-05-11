@@ -5,7 +5,22 @@ export const httpUserRegister = async (data) => {
 }
 
 export const httpUpdateUserAfterRegister = async (data) => {
-     return publicRequest.post('/updateUserWorkspace',data);
+     try{
+          const result1 = await publicRequest.post('/updateUserWorkspace',{
+               userName: data
+          });
+          const result2 = await publicRequest.post('/createRole',{
+               roleName : data
+          });
+          const result3 = await publicRequest.post('/associateUserFromRole',{
+               userName:data,
+               roleName: data
+          });
+          return true;
+     }catch(err){
+          return false;
+     }
+    
 }
 
 export const httpLoginUser = async (data) => {

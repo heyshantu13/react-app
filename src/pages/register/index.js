@@ -30,12 +30,16 @@ function Register() {
       try{
         const httpRespons = await httpUserRegister(state);
         if(httpRespons.data.status === 201){
-            await httpUpdateUserAfterRegister({
-              userName : state.userName
-            })
-          toast.success("User Created Succesfully")
+            const responseAfterRegister = await httpUpdateUserAfterRegister(
+              state.userName
+            )
+          if(responseAfterRegister){
+            toast.success("User Created Succesfully")
+          }else{
+            toast.error("Some error occurred");
+          }
           setTimeout(() => {
-            navigate("/admin/dashboard")
+            navigate("/admin/select")
           },2000)
         }
       }catch(error){
