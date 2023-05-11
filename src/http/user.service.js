@@ -11,3 +11,7 @@ export const httpUpdateUserAfterRegister = async (data) => {
 export const httpLoginUser = async (data) => {
      return publicRequest.post('/login',data)
 }
+
+export const httpGetUserList =async () => {
+     return publicRequest.get('/getUsers');
+}

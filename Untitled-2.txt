@@ -1,0 +1,28 @@
+On Registration:- 
+1. create user role with userName as userRole
+2. associateUserFrom Role (username & role )
+3. Change Signup page layout
+
+After login show Administration Page or Viewer Page
+
+
+Sidebar
+User Management
+1. Manage Users
+2. Manage ROles
+3. User Role Mapping
+
+Services
+1.  
+Change Template
+
+Change Login And register APi
+
+
+Required CHange role URL for user
+
+
+Do not delete "catalogadmin" ;
+
+Change icons 
+Improve Table GUI

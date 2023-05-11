@@ -36,7 +36,7 @@ function Login() {
         <div className="signin-box">
           <h2 className="slim-logo">
             <a href="/">
-              NIC <span>.</span>
+              CATELOG APP <span>.</span>
             </a>
           </h2>
           <h3 className="signin-title-secondary">Sign in to continue.</h3>
