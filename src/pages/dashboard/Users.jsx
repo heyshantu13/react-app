@@ -16,9 +16,21 @@ function Users() {
   }, []);
 
   const [showAddModal, setShowAddModal] = useState(false);
-  const handleAddModal = () => {
-    setShowAddModal(!showAddModal);
-  };
+  const [showConfirmModal,setShowConfirmModal] = useState(false);
+  const [roleName,setRoleName] = useState();
+ 
+  const handleDelete = async (name) => {
+    setShowConfirmModal(true);
+    setRoleName(name);
+  }
+
+  const applyDelete = async () => {
+    try{
+
+    }catch(err){
+      
+    }
+  }
 
   return (
     <>
@@ -56,9 +68,14 @@ function Users() {
                     <td>{item?.userName}</td>
                     <td>{item?.enabled ? "Active" : "Inactive"}</td>
                     <td>
-                      <button className="btn btn-primary btn-sm mg-b-10">
-                        <i className="fa fa-edit"></i>
+                      <button className="btn btn-primary btn-md mg-b-10 mg-r-4">
+                      <i className="icon ion-ios-gear-outline"></i>
                       </button>
+                      {item?.userName != "catalogadmin" &&
+                      <button className="btn btn-danger btn-md mg-b-10 mg-r-4"  onClick={() => handleDelete(item?.userName)}>
+                      <i className="icon ion-ios-trash-outline"></i>
+                      </button>
+                       }
                     </td>
                   </tr>
                 ))}
@@ -79,6 +96,48 @@ function Users() {
         {/* Modal */}
             {showAddModal && ( <UserModel setShowAddModal={setShowAddModal} />)}
         {/* End Modal */}
+
+        
+      {/* Confirmation Modal */}
+      <div
+          className={`modal fade ${showConfirmModal ? "show" : ""}`}
+          tabIndex="-1"
+          role="dialog"
+          style={{ display: showConfirmModal ? "block" : "none" }}
+        >
+          <div className="modal-dialog modal-sm" role="document">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title">Confirmation</h5>
+                <button
+                  type="button"
+                  className="close"
+                  onClick={() => setShowConfirmModal(false)}
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div className="modal-body">Are you sure you want to delete?</div>
+              <div className="modal-footer">
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  onClick={() => setShowConfirmModal(false)}
+                >
+                  Cancel
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-danger"
+                  onClick={applyDelete}
+                >
+                  Delete
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      {/* End Confirmation Modal */}
       </div>
     </>
   );

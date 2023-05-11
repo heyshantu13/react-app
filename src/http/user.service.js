@@ -30,3 +30,7 @@ export const httpLoginUser = async (data) => {
 export const httpGetUserList =async () => {
      return publicRequest.get('/getUsers');
 }
+
+export const httpDeleteUser = async (data) => {
+     return publicRequest.delete('/deleteUser',data);
+}

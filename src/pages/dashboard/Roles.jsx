@@ -119,45 +119,45 @@ function Roles() {
           </div>
         </div>
 
-           {/* Confirmation Modal */}
-      <div
-        className={`modal fade ${showConfirmModal ? "show" : ""}`}
-        tabIndex="-1"
-        role="dialog"
-        style={{ display: showConfirmModal ? "block" : "none" }}
-      >
-        <div className="modal-dialog modal-sm" role="document">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title">Confirmation</h5>
-              <button
-                type="button"
-                className="close"
-                onClick={() => setShowConfirmModal(false)}
-              >
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div className="modal-body">Are you sure you want to delete?</div>
-            <div className="modal-footer">
-              <button
-                type="button"
-                className="btn btn-secondary"
-                onClick={() => setShowConfirmModal(false)}
-              >
-                Cancel
-              </button>
-              <button
-                type="button"
-                className="btn btn-danger"
-                onClick={applyDelete}
-              >
-                Delete
-              </button>
+      {/* Confirmation Modal */}
+        <div
+          className={`modal fade ${showConfirmModal ? "show" : ""}`}
+          tabIndex="-1"
+          role="dialog"
+          style={{ display: showConfirmModal ? "block" : "none" }}
+        >
+          <div className="modal-dialog modal-sm" role="document">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title">Confirmation</h5>
+                <button
+                  type="button"
+                  className="close"
+                  onClick={() => setShowConfirmModal(false)}
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div className="modal-body">Are you sure you want to delete?</div>
+              <div className="modal-footer">
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  onClick={() => setShowConfirmModal(false)}
+                >
+                  Cancel
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-danger"
+                  onClick={applyDelete}
+                >
+                  Delete
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
       {/* End Confirmation Modal */}
       {/* Create Modal */}
   {showAddModal &&  <div className="modal fade show" style={{ display: "block", }}>
