@@ -58,7 +58,7 @@ function Register() {
         <div className="signin-box signup">
           <h2 className="slim-logo">
             <a href="">
-              CATELOG APP<span>.</span>
+            CATELOG APP<span>.</span>
             </a>
           </h2>
           <h3 className="signin-title-primary">Create New Account!</h3>

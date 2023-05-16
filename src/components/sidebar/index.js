@@ -1,7 +1,12 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { NavLink } from 'react-router-dom';
 
 function Sidebar() {
+  const [isSubMenuOpen, setSubMenuOpen] = useState(false);
+
+  const toggleSubMenu = () => {
+    setSubMenuOpen(!isSubMenuOpen);
+  };
   return (
     <>
      <div className="slim-sidebar">
@@ -9,24 +14,24 @@ function Sidebar() {
 
       
  
-    <ul className="nav nav-sidebar">
-      <li className="sidebar-nav-item with-sub">
-        <a href="#" className="sidebar-nav-link active">
+        <ul className="nav nav-sidebar">
+      <li className={`sidebar-nav-item with-sub ${isSubMenuOpen ? 'open' : ''}`}>
+        <a href="#" className="sidebar-nav-link active" onClick={toggleSubMenu}>
           <i className="icon ion-ios-people-outline" /> User Management
         </a>
-        <ul className="nav sidebar-nav-sub">
-        <li className="nav-sub-item">
-        <NavLink to="/admin/users" activeClassName="active" >
-            <a href="" className="nav-sub-link active">
-            Manage Users
-            </a>
+        <ul className={`nav sidebar-nav-sub ${isSubMenuOpen ? 'open' : ''}`}>
+          <li className="nav-sub-item">
+            <NavLink to="/admin/users" activeClassName="active">
+              <a href="#" className="nav-sub-link">
+                Manage Users
+              </a>
             </NavLink>
           </li>
           <li className="nav-sub-item">
-          <NavLink to="/admin/roles" activeClassName="active" >
-            <a href="" className="nav-sub-link active">
-              Manage Roles
-            </a>
+            <NavLink to="/admin/roles" activeClassName="active">
+              <a href="#" className="nav-sub-link">
+                Manage Roles
+              </a>
             </NavLink>
           </li>
           <li className="nav-sub-item">
@@ -34,7 +39,6 @@ function Sidebar() {
               User Role Mapping
             </a>
           </li>
-        
         </ul>
       </li>
       <li className="sidebar-nav-item">
@@ -43,13 +47,19 @@ function Sidebar() {
         </a>
       </li>
       <li className="sidebar-nav-item">
-        <a href="page-messages.html" className="sidebar-nav-link"><i className="icon fa fa-book fa-1x"></i> Logs</a>
+        <a href="page-messages.html" className="sidebar-nav-link">
+          <i className="icon fa fa-book fa-1x" /> Logs
+        </a>
       </li>
       <li className="sidebar-nav-item">
-        <a href="page-messages.html" className="sidebar-nav-link"><i className="icon fa fa-question-circle fa-1x"></i>Help/Documentation</a>
+        <a href="page-messages.html" className="sidebar-nav-link">
+          <i className="icon fa fa-question-circle fa-1x" /> Help/Documentation
+        </a>
       </li>
       <li className="sidebar-nav-item">
-        <a href="" className="sidebar-nav-link"><i className="icon fa fa fa-code fa-1x"></i>APIs</a>
+        <a href="" className="sidebar-nav-link">
+          <i className="icon fa fa fa-code fa-1x" /> APIs
+        </a>
       </li>
     </ul>
   </div>

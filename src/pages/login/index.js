@@ -24,10 +24,23 @@ function Login() {
       const httpResult = await httpLoginUser(state);
       if(httpResult.data.info === "invalidCredentials"){
           toast.error(httpResult.data.info);
+      }else{
+        setTimeout(() => {
+          navigate("/admin/select");
+        },2400);
       }
-      navigate("/admin/select");
-    }catch(err){
-      toast.error("Something Went Wrong!")
+     
+    }catch(error){
+      if (error.response) {
+        if (error.response.status === 404) {
+          toast.error("User Not Found")
+        }
+        else if (error.response.status === 403) {
+          toast.error("Account Not Active")
+        }else{
+          toast.error("Unable to login")
+        }
+      }
     }
   }
   
@@ -40,7 +53,7 @@ function Login() {
       <div className="signin-right">
 
         <div className="signin-box">
-          <h2 className="signin-title-primary">Welcome back!</h2>
+          <h2 className="signin-title-primary">Welcome!</h2>
           <h3 className="signin-title-secondary">Sign in to continue.</h3>
 
           <form onSubmit={handleLogin}>         
@@ -72,19 +85,19 @@ function Login() {
         </div>
 
       </div>
-      <div className="signin-left">
-        <div className="signin-box">
-          <h2 className="slim-logo"><a href="/">slim<span>.</span></a></h2>
+      <div class="signin-left">
+	<div class="signin-box">
+		<h2 class="slim-logo"><a href="https://altztech.com/altz-enterprise-essential">altz.enterprise.essential</a></h2>
 
-          <p>We are excited to launch our new company and product Slim. After being featured in too many magazines to mention and having created an online stir, we know that ThemePixels is going to be big. We also hope to win Startup Fictional Business of the Year this year.</p>
+		<p>Cloud Native Application for Big Geospatial Data Management and Intuitive Visualization on 3D Platform by leveraging AI/ML technologies for actionable analytics.</p>
 
-          <p>Browse our site and see for yourself why you need Slim.</p>
+		<p>Browse our site and see for yourself why you need altz.enterprise.essential</p>
 
-          {/* <p><a href="#" className="btn btn-outline-secondary pd-x-25">Learn More</a></p> */}
+		<p><a href="#" class="btn btn-outline-secondary pd-x-25">Learn More</a></p>
 
-          {/* <p className="tx-12">&copy; Copyright 2018. All Rights Reserved.</p> */}
-        </div>
-      </div>
+		<p class="tx-12">&copy; Copyright 2023 Altz Technologies - All Rights Reserved.</p>
+	</div>
+</div>
     </div>
     </>
   );
